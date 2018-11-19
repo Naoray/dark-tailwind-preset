@@ -1,0 +1,63 @@
+@extends('layouts.guest')
+
+@section('content')
+<div class="flex flex-1 items-center justify-center">
+    <div class="w-full max-w-sm">
+        <h1 class="text-4xl mb-2 font-hairline text-left text-teal">{{ __('Reset Password') }}</h1>
+        <form class="pb-6" method="POST" action="{{ route('password.update') }}">
+            @csrf
+
+            <input type="hidden" name="token" value="{{ $token }}">
+
+            <div class="mb-4">
+                <label class="font-bold text-grey-light block mb-2" for="email">{{ __('E-Mail Address') }}</label>
+                <input
+                    type="email"
+                    name="email"
+                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('email') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    placeholder="han.solo@falcon.io"
+                    id="email"
+                    value="{{ $email ?? old('email') }}" 
+                    autofocus required>
+                @if ($errors->has('email'))
+                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('email') }}</p>
+                @endif
+            </div>
+
+            <div class="mb-4">
+                <label class="font-bold text-grey-light block mb-2" for="password">{{ __('Password') }}</label>
+                <input
+                    type="password"
+                    name="password"
+                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('password') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    placeholder="***********"
+                    id="password"
+                    required>
+                @if ($errors->has('password'))
+                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('password') }}</p>
+                @endif
+            </div>
+
+            <div class="mb-6">
+                <label class="font-bold text-grey-light block mb-2" for="password-confirm">{{ __('Confirm Password') }}</label>
+                <input
+                    type="password"
+                    name="password_confirmation"
+                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('password-confirm') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    placeholder="***********"
+                    id="password-confirm"
+                    required>
+                @if ($errors->has('password-confirm'))
+                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('password-confirm') }}</p>
+                @endif
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button class="bg-teal hover:bg-transparent border border-transparent hover:border-teal hover:border-2 border-dashed text-white hover:text-teal font-bold py-2 px-4 rounded">
+                    {{ __('Reset Password') }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+@endsection

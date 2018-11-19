@@ -1,0 +1,40 @@
+@extends('layouts.guest')
+
+@section('content')
+<div class="flex flex-1 items-center justify-center">
+    <div class="w-full max-w-sm">
+        <h1 class="text-4xl mb-2 font-hairline text-left text-teal">{{ __('Reset Password') }}</h1>
+        @if (session('status'))
+            <div class="mb-3 text-green-light" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+        <form class="pb-6" method="POST" action="{{ route('password.email') }}">
+            @csrf
+
+            <div class="mb-6">
+                <label class="font-bold text-grey-light block mb-2" for="email">{{ __('E-Mail Address') }}</label>
+                <input
+                    type="email"
+                    name="email"
+                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('email') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    placeholder="elon.musk@spacex.com"
+                    id="email"
+                    value="{{ old('email') }}" required autofocus>
+                @if ($errors->has('email'))
+                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('email') }}</p>
+                @endif
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button class="bg-teal hover:bg-transparent border border-transparent hover:border-teal hover:border-2 border-dashed text-white hover:text-teal font-bold py-2 px-4 rounded">
+                    {{ __('Send Password Reset Link') }}
+                </button>
+            </div>
+        </form>
+        <div class="block mt-2">
+            <p class="text-grey text-sm">Remember your password? - <a href="{{ route('login') }}" class="no-underline text-blue-light hover:underline font-bold">{{ __('Login') }}</a>.</p>
+        </div>
+    </div>
+</div>
+@endsection

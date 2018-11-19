@@ -1,0 +1,32 @@
+{
+    "name": "naoray/dark-tailwind-preset",
+    "description": "Dark tailwindcss preset including auth views",
+    "type": "package",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "tailwindcss",
+        "preset"
+    ],
+    "authors": [
+        {
+            "name": "Krishan Koenig",
+            "email": "krishan.koenig@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Naoray\\DarkTailwindPreset\\": "./src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naoray\\DarkTailwindPreset\\DarkTailwindPresetServiceProvider"
+            ]
+        }
+    }
+}

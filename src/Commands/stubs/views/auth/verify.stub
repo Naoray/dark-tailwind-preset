@@ -1,0 +1,18 @@
+@extends('layouts.guest')
+
+@section('content')
+<div class="flex flex-1 items-center justify-center">
+    <div class="w-full max-w-sm">
+        <h1 class="text-4xl mb-2 font-hairline text-left text-teal">{{ __('Verify Your Email Address') }}</h1>
+        @if (session('resent'))
+            <div class="mb-3 text-green-light" role="alert">
+                {{ __('A fresh verification link has been sent to your email address.') }}
+            </div>
+        @endif
+        <p class="text-grey-light">
+            {{ __('Before proceeding, please check your email for a verification link.') }}
+            {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}" class="no-underline text-blue-light hover:underline font-bold">{{ __('click here to request another') }}</a>.
+        </p>
+    </div>
+</div>
+@endsection
