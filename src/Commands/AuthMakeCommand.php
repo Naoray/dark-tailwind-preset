@@ -40,6 +40,8 @@ class AuthMakeCommand extends MakeAuth
         }
 
         File::copyDirectory(__DIR__.'/stubs/img', resource_path('img'));
+
+        $this->info('Run `yarn dev` to publish the images.');
     }
 
     /**
