@@ -21,7 +21,7 @@ class AuthMakeCommand extends MakeAuth
         'auth/passwords/email.stub' => 'auth/passwords/email.blade.php',
         'auth/passwords/reset.stub' => 'auth/passwords/reset.blade.php',
         'layouts/user.stub' => 'layouts/user.blade.php',
-        'home.stub' => 'home.blade.php'
+        'home.stub' => 'home.blade.php',
     ];
 
     /**

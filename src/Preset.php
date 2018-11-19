@@ -74,7 +74,7 @@ class Preset extends LaravelPreset
             array_except($packages, [
                 'bootstrap',
                 'jquery',
-                'popper.js'
+                'popper.js',
             ])
         );
     }
@@ -109,7 +109,7 @@ class Preset extends LaravelPreset
     {
         tap(new Filesystem, function ($files) {
             $files->delete(resource_path('views/welcome.blade.php'));
-            $files->copyDirectory(__DIR__ . '/stubs/views', resource_path('views'));
+            $files->copyDirectory(__DIR__.'/stubs/views', resource_path('views'));
         });
     }
 
