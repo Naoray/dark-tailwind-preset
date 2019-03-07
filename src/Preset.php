@@ -8,6 +8,8 @@ use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
 
 class Preset extends LaravelPreset
 {
+    use EnsuresResourceDirectoryExists;
+
     /**
      * Install the preset.
      *
@@ -16,7 +18,7 @@ class Preset extends LaravelPreset
     public static function install()
     {
         static::ensureComponentDirectoryExists();
-        static::ensureImgDirectoryExists();
+        static::ensureResourceDirectoryExists('img');
         static::updateSassDirectory();
         static::updatePackages();
         static::updateWebpackConfiguration();
@@ -24,20 +26,6 @@ class Preset extends LaravelPreset
         static::updateTemplates();
         static::removeNodeModules();
         static::updateGitignore();
-    }
-
-    /**
-     * Ensures an `img` directory exists.
-     *
-     * @return void
-     */
-    public static function ensureImgDirectoryExists()
-    {
-        $filesystem = new Filesystem;
-
-        if (! $filesystem->isDirectory($directory = resource_path('img'))) {
-            $filesystem->makeDirectory($directory, 0755, true);
-        }
     }
 
     /**
@@ -49,12 +37,12 @@ class Preset extends LaravelPreset
     {
         $filesystem = new Filesystem;
 
-        if (! $filesystem->isDirectory($directory = resource_path('sass'))) {
+        if (!$filesystem->isDirectory($directory = resource_path('sass'))) {
             $filesystem->makeDirectory($directory, 0755, true);
         }
 
         File::cleanDirectory(resource_path('sass'));
-        copy(__DIR__.'/stubs/app.scss', resource_path('sass/app.scss'));
+        copy(__DIR__ . '/stubs/app.scss', resource_path('sass/app.scss'));
     }
 
     /**
@@ -67,9 +55,9 @@ class Preset extends LaravelPreset
     {
         return array_merge(
             [
-                'tailwindcss' => '^0.7.2',
+                'tailwindcss' => '^0.7.4',
                 'laravel-mix-tailwind' => '^0.1.0',
-                'laravel-mix-purgecss' => '^3.0.0',
+                'laravel-mix-purgecss' => '^4.1.0',
             ],
             array_except($packages, [
                 'bootstrap',
@@ -86,7 +74,7 @@ class Preset extends LaravelPreset
      */
     public static function updateWebpackConfiguration()
     {
-        copy(__DIR__.'/stubs/webpack.mix.js', base_path('webpack.mix.js'));
+        copy(__DIR__ . '/stubs/webpack.mix.js', base_path('webpack.mix.js'));
     }
 
     /**
@@ -96,8 +84,8 @@ class Preset extends LaravelPreset
      */
     protected static function updateScripts()
     {
-        copy(__DIR__.'/stubs/app.js', resource_path('js/app.js'));
-        copy(__DIR__.'/stubs/bootstrap.js', resource_path('js/bootstrap.js'));
+        copy(__DIR__ . '/stubs/app.js', resource_path('js/app.js'));
+        copy(__DIR__ . '/stubs/bootstrap.js', resource_path('js/bootstrap.js'));
     }
 
     /**
@@ -109,7 +97,7 @@ class Preset extends LaravelPreset
     {
         tap(new Filesystem, function ($files) {
             $files->delete(resource_path('views/welcome.blade.php'));
-            $files->copyDirectory(__DIR__.'/stubs/views', resource_path('views'));
+            $files->copyDirectory(__DIR__ . '/stubs/views', resource_path('views'));
         });
     }
 
@@ -120,6 +108,6 @@ class Preset extends LaravelPreset
      */
     protected static function updateGitignore()
     {
-        copy(__DIR__.'/stubs/gitignore-stub', base_path('.gitignore'));
+        copy(__DIR__ . '/stubs/gitignore-stub', base_path('.gitignore'));
     }
 }
