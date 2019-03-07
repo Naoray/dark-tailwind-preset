@@ -48,13 +48,13 @@ class AuthMakeCommand extends MakeAuth
     protected function addHasDropdownMixin()
     {
         static::ensureResourceDirectoryExists('js/mixins');
-        copy(__DIR__ . '/stubs/HasDropdown.js', resource_path('js/mixins/HasDropdown.js'));
+        copy(__DIR__.'/stubs/HasDropdown.js', resource_path('js/mixins/HasDropdown.js'));
 
         file_put_contents(resource_path('js/app.js'), str_replace(
-            'const app = new Vue({' . PHP_EOL,
-            "import HasDropdown from './mixins/HasDropdown'" . PHP_EOL .
-            'const app = new Vue({' . PHP_EOL .
-            '  mixins: [HasDropdown],' . PHP_EOL,
+            'const app = new Vue({'.PHP_EOL,
+            "import HasDropdown from './mixins/HasDropdown'".PHP_EOL.
+            'const app = new Vue({'.PHP_EOL.
+            '  mixins: [HasDropdown],'.PHP_EOL,
             file_get_contents(resource_path('js/app.js'))
         ));
     }
@@ -67,7 +67,7 @@ class AuthMakeCommand extends MakeAuth
     protected function copyImages()
     {
         static::ensureResourceDirectoryExists('img');
-        File::copyDirectory(__DIR__ . '/stubs/img', resource_path('img'));
+        File::copyDirectory(__DIR__.'/stubs/img', resource_path('img'));
     }
 
     /**
@@ -78,14 +78,14 @@ class AuthMakeCommand extends MakeAuth
     protected function exportViews()
     {
         foreach ($this->views as $key => $value) {
-            if (file_exists($view = resource_path('views/' . $value)) && !$this->option('force')) {
-                if (!$this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
+            if (file_exists($view = resource_path('views/'.$value)) && ! $this->option('force')) {
+                if (! $this->confirm("The [{$value}] view already exists. Do you want to replace it?")) {
                     continue;
                 }
             }
 
             copy(
-                __DIR__ . '/stubs/views/' . $key,
+                __DIR__.'/stubs/views/'.$key,
                 $view
             );
         }

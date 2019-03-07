@@ -16,7 +16,7 @@ trait EnsuresResourceDirectoryExists
     {
         $filesystem = new Filesystem;
 
-        if (!$filesystem->isDirectory($directory = resource_path($name))) {
+        if (! $filesystem->isDirectory($directory = resource_path($name))) {
             $filesystem->makeDirectory($directory, 0755, true);
         }
     }
