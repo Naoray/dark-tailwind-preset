@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('body-colors', 'text-grey-dark', 'bg-white')
+@section('body-colors', 'text-gray-600', 'bg-white')
 
 @section('header')
 <header class="w-full">
   <nav class="container mx-auto py-8 px-6 flex justify-between items-center relative">
     <div class="">
-      <a href="/" class="text-2xl font-sans font-hairline text-teal hover:text-teal-darker no-underline">{{ config('app.name') }}</a>
+      <a href="/" class="text-2xl font-sans font-hairline text-teal-500 hover:text-teal-700 no-underline">{{ config('app.name') }}</a>
     </div>
     <div class="flex items-center">
       <div class="relative text-center">
@@ -15,7 +15,7 @@
         </a>
         <ul ref="dropdown" class="dropdown absolute w-32 z-50 pin-r list-reset bg-white rounded-lg py-2 shadow" style="display: none;">
           <li>
-            <a class="no-underline text-teal hover:text-teal-darker block"
+            <a class="no-underline text-teal-500 hover:text-teal-700 block"
               href="{{ route('logout') }}"
               @click.prevent="$refs.logout_form.submit()">
                 {{ __('Logout') }}

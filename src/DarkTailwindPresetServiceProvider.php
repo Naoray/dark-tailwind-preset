@@ -10,8 +10,6 @@ class DarkTailwindPresetServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -19,11 +17,11 @@ class DarkTailwindPresetServiceProvider extends ServiceProvider
             Preset::install();
 
             $command->info('Dark Tailwind scaffolding installed successfully');
-            $command->info('Please run "yarn && ./node_modules/.bin/tailwind init tailwind.js && yarn dev" to compile your fresh scaffolding.');
+            $command->info('Please run "yarn && npx tailwind init && yarn dev" to compile your fresh scaffolding.');
         });
 
         $this->app->extend('command.auth.make', function () {
-            return new AuthMakeCommand;
+            return new AuthMakeCommand();
         });
     }
 }

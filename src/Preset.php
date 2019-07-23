@@ -12,8 +12,6 @@ class Preset extends LaravelPreset
 
     /**
      * Install the preset.
-     *
-     * @return void
      */
     public static function install()
     {
@@ -30,14 +28,12 @@ class Preset extends LaravelPreset
 
     /**
      * Clean Sass directory.
-     *
-     * @return void
      */
     public static function updateSassDirectory()
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
 
-        if (!$filesystem->isDirectory($directory = resource_path('sass'))) {
+        if (! $filesystem->isDirectory($directory = resource_path('sass'))) {
             $filesystem->makeDirectory($directory, 0755, true);
         }
 
@@ -48,15 +44,15 @@ class Preset extends LaravelPreset
     /**
      * Update the given package array.
      *
-     * @param  array  $packages
+     * @param array $packages
+     *
      * @return array
      */
     protected static function updatePackageArray(array $packages)
     {
         return array_merge(
             [
-                'tailwindcss' => '^0.7.4',
-                'laravel-mix-tailwind' => '^0.1.0',
+                'tailwindcss' => '^1.0',
                 'laravel-mix-purgecss' => '^4.1.0',
             ],
             array_except($packages, [
@@ -69,8 +65,6 @@ class Preset extends LaravelPreset
 
     /**
      * Update the Webpack configuration.
-     *
-     * @return void
      */
     public static function updateWebpackConfiguration()
     {
@@ -79,8 +73,6 @@ class Preset extends LaravelPreset
 
     /**
      * Update the script files.
-     *
-     * @return void
      */
     protected static function updateScripts()
     {
@@ -90,12 +82,10 @@ class Preset extends LaravelPreset
 
     /**
      * Update view templates.
-     *
-     * @return void
      */
     protected static function updateTemplates()
     {
-        tap(new Filesystem, function ($files) {
+        tap(new Filesystem(), function ($files) {
             $files->delete(resource_path('views/welcome.blade.php'));
             $files->copyDirectory(__DIR__ . '/stubs/views', resource_path('views'));
         });
@@ -103,8 +93,6 @@ class Preset extends LaravelPreset
 
     /**
      * Update .gitignore file.
-     *
-     * @return void
      */
     protected static function updateGitignore()
     {

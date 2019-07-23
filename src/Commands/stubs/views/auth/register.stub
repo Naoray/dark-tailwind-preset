@@ -3,74 +3,74 @@
 @section('content')
 <div class="flex flex-1 items-center">
     <div class="w-full max-w-xs flex flex-col justify-center">
-        <h1 class="text-4xl mb-2 font-hairline text-left text-teal">{{ __('Register') }}</h1>
+        <h1 class="text-4xl mb-2 font-hairline text-left text-teal-500">{{ __('Register') }}</h1>
         <form class="pb-6" method="POST" action="{{ route('register') }}">
             @csrf
 
             <div class="mb-4">
-                <label class="font-bold text-grey-light block mb-2" for="name">{{ __('Name') }}</label>
+                <label class="font-bold text-gray-400 block mb-2" for="name">{{ __('Name') }}</label>
                 <input
                     type="text"
                     name="name"
-                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('name') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    class="block appearance-none w-full text-gray-900 bg-teal-100 px-2 py-2 rounded {{ $errors->has('name') ? 'border-2 border-red-500' : 'border border-gray-400 hover:border-teal-500' }}"
                     placeholder="Han Solo"
                     id="name"
                     value="{{ old('name') }}" required autofocus>
                 @if ($errors->has('name'))
-                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('name') }}</p>
+                    <p class="mt-2 text-red-500 font-bold text-xs italic">{{ $errors->first('name') }}</p>
                 @endif
             </div>
 
             <div class="mb-4">
-                <label class="font-bold text-grey-light block mb-2" for="email">{{ __('E-Mail Address') }}</label>
+                <label class="font-bold text-gray-400 block mb-2" for="email">{{ __('E-Mail Address') }}</label>
                 <input
                     type="email"
                     name="email"
-                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('email') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    class="block appearance-none w-full text-gray-900 bg-teal-100 px-2 py-2 rounded {{ $errors->has('email') ? 'border-2 border-red-500' : 'border border-gray-400 hover:border-teal-500' }}"
                     placeholder="han.solo@falcon.io"
                     id="email"
                     value="{{ old('email') }}" required>
                 @if ($errors->has('email'))
-                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('email') }}</p>
+                    <p class="mt-2 text-red-500 font-bold text-xs italic">{{ $errors->first('email') }}</p>
                 @endif
             </div>
 
             <div class="mb-4">
-                <label class="font-bold text-grey-light block mb-2" for="password">{{ __('Password') }}</label>
+                <label class="font-bold text-gray-400 block mb-2" for="password">{{ __('Password') }}</label>
                 <input
                     type="password"
                     name="password"
-                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('password') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    class="block appearance-none w-full text-gray-900 bg-teal-100 px-2 py-2 rounded {{ $errors->has('password') ? 'border-2 border-red-500' : 'border border-gray-400 hover:border-teal-500' }}"
                     placeholder="***********"
                     id="password"
                     required>
                 @if ($errors->has('password'))
-                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('password') }}</p>
+                    <p class="mt-2 text-red-500 font-bold text-xs italic">{{ $errors->first('password') }}</p>
                 @endif
             </div>
 
             <div class="mb-6">
-                <label class="font-bold text-grey-light block mb-2" for="password-confirm">{{ __('Confirm Password') }}</label>
+                <label class="font-bold text-gray-400 block mb-2" for="password-confirm">{{ __('Confirm Password') }}</label>
                 <input
                     type="password"
                     name="password_confirmation"
-                    class="block appearance-none w-full bg-teal-lightest px-2 py-2 rounded {{ $errors->has('password-confirm') ? 'border-2 border-red' : 'border border-grey-light hover:border-teal' }}"
+                    class="block appearance-none w-full text-gray-900 bg-teal-100 px-2 py-2 rounded {{ $errors->has('password-confirm') ? 'border-2 border-red-500' : 'border border-gray-400 hover:border-teal-500' }}"
                     placeholder="***********"
                     id="password-confirm"
                     required>
                 @if ($errors->has('password-confirm'))
-                    <p class="mt-2 text-red-lighter font-bold text-xs italic">{{ $errors->first('password-confirm') }}</p>
+                    <p class="mt-2 text-red-500 font-bold text-xs italic">{{ $errors->first('password-confirm') }}</p>
                 @endif
             </div>
 
             <div class="flex items-center justify-between">
-                <button class="bg-teal hover:bg-transparent border border-transparent hover:border-teal hover:border-2 border-dashed text-white hover:text-teal font-bold py-2 px-4 rounded">
+                <button class="bg-teal-500 hover:bg-transparent border border-transparent hover:border-teal-500 hover:border-2 border-dashed text-white hover:text-teal-500 font-bold py-2 px-4 rounded">
                     {{ __('Register') }}
                 </button>
             </div>
         </form>
         <div class="block mt-2">
-            <p class="text-grey text-sm">Have already an account? - <a href="{{ route('login') }}" class="no-underline text-blue-light hover:underline font-bold">{{ __('Login') }}</a>.</p>
+            <p class="text-gray-500 text-sm">Have already an account? - <a href="{{ route('login') }}" class="no-underline text-blue-400 hover:underline font-bold">{{ __('Login') }}</a>.</p>
         </div>
     </div>
 </div>
