@@ -7,15 +7,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <script src="{{ mix('js/app.js') }}" defer></script>
   </head>
   <body class="font-sans leading-tight @yield('body-colors', 'text-white bg-black')">
-    <div id="app" class="min-h-screen flex flex-col items-center">
+    <div id="app" class="min-h-screen flex flex-col justify-center items-center">
       @yield('header')
 
       @yield('content')
       
       @yield('footer')
-    </div>
-    <script src="{{ mix('js/app.js') }}"></script>
   </body>
 </html>
