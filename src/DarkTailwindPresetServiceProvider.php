@@ -2,8 +2,8 @@
 
 namespace Naoray\DarkTailwindPreset;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\Console\PresetCommand;
+use Illuminate\Support\ServiceProvider;
 use Naoray\DarkTailwindPreset\Commands\AuthMakeCommand;
 
 class DarkTailwindPresetServiceProvider extends ServiceProvider

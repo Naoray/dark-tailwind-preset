@@ -2,8 +2,8 @@
 
 namespace Naoray\DarkTailwindPreset\Commands;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Auth\Console\AuthMakeCommand as MakeAuth;
+use Illuminate\Support\Facades\File;
 use Naoray\DarkTailwindPreset\EnsuresResourceDirectoryExists;
 
 class AuthMakeCommand extends MakeAuth

@@ -2,9 +2,9 @@
 
 namespace Naoray\DarkTailwindPreset;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\Presets\Preset as LaravelPreset;
+use Illuminate\Support\Facades\File;
 
 class Preset extends LaravelPreset
 {
